@@ -1,13 +1,91 @@
 <!DOCTYPE html>
 <html>
 <body>
-<script>functions.js</script>
-<div class="Sidebar" style="width:25%">
-    <h3 class="SideItem">Menu</h3>
-    <a href="#" class="SideItem SideButton">Main Page</a>
-    <a href="#" class="SideItem SideButton">Charts</a>
-    <a href="#" class="SideItem SideButton">Recreation</a>
+<title>Monitor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  
+<script>
+  //Closing functions
+function SideB_Open() {
+  document.getElementById("Sidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function SideB_Close() {
+  document.getElementById("Sidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+//Json functions
+function Get(yourUrl){
+  var Httpreq = new XMLHttpRequest(); // a new request
+  Httpreq.open("GET",yourUrl,false);
+  Httpreq.send(null);
+  return Httpreq.responseText;          
+}
+Get("https://bezainternational.org/tvr/public/");
+var json_obj = JSON.parse(Get(yourUrl));
+alert(json_obj.title);
+</script>
+
+<div class="w3-sidebar w3-bar-block w3-border-right w3-black w3-animate-left" style="display:none;z-index:5" id="Sidebar">
+  <button onclick="SideB_Close()" class="w3-bar-item w3-large w3-green">Close &times;</button>
+  <a href="#" class="w3-bar-item w3-button">Main Page</a>
+  <a href="#" class="w3-bar-item w3-button">Charts</a>
+  <a href="#" class="w3-bar-item w3-button">Recreation</a>
+</div>
+  <div class="w3-green">
+    
+    <button class="w3-button w3-green w3-xlarge" onclick="SideB_Open()">☰</button>
+    <h1 align ="center">TVRaiser Monitor</h1>
   </div>
+  <div class="w3-overlay" onclick="SideB_Close()" style="cursor:pointer" id="myOverlay"></div>
+  <p> </p>
+  <div class="w3-container ">
+    <div class="w3-card-4 w3-black w3-round-large w3-third w3-row">
+
+      <header class="w3-container w3-green w3-round-large">
+        <h1>Coffee status</h1>
+      </header>
+      
+      <div class="w3-container">
+        <p>Coffee status: </p>
+        <p>Current coffee level: 0</p>
+        <p>Current coffee temperature: 0</p>
+      </div>
+      
+      </div>
+
+    <div class="w3-card-4 w3-black w3-round-large w3-row w3-third">
+
+      <header class="w3-container w3-green w3-round-large">
+        <h1>Weather</h1>
+      </header>
+      
+      <div class="w3-container">
+        <p>Current temperature: 0</p>
+        <p>Current humidity: 0</p>
+        <p>Current wind speed: 0</p>
+      </div>
+      
+      </div>
+      <p></p>
+
+    <div class="w3-card-4 w3-black w3-round-large ">
+
+      <header class="w3-container w3-green w3-round-large">
+        <h1>Notifications</h1>
+      </header>
+        
+      <div class="w3-container">
+        <p>Current notifications: </p>
+      </div>
+        
+    </div>
+    </div>
+  </div>
+</div>
 
 
 </body>
