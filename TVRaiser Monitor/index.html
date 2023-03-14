@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<body>
+<title>Monitor</title>
+<
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/w3.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/fontawesome-free-6.3.0-web/css/all.css">
+
+<script src="js/functions.js"></script>
+
+
+<!-- SideBar -->
+<div class="w3-sidebar w3-bar-block w3-border-right w3-black w3-animate-left w3-top" style="display:none;z-index:5" id="Sidebar">
+  <button onclick="SideB_Close()" id="SideBarClose" class="w3-bar-item w3-theme">Close &times;</button>
+  <a href="#" class="w3-bar-item w3-button">Main Page</a>
+  <a href="#" class="w3-bar-item w3-button">Charts</a>
+  <a href="#" class="w3-bar-item w3-button">Recreation</a>
+</div>
+  <div class="w3-theme w3-top w3-margin-bottom">
+    <!-- "Hamburger" button -->
+    <div class ="w3-row">
+    <button class="w3-button w3-theme w3-xxlarge w3-left-align w3-quarter" style="width:70px" onclick="SideB_Open()">☰</button>
+    <div class="w3-center w3-rest"><h1>TVRaiser Monitor</h1></div>
+    </div>
+  </div>
+
+  <div class="w3-overlay" onclick="SideB_Close()" style="cursor:pointer" id="myOverlay"></div>
+  <p> </p>
+  <!-- Main page -->
+  <div class="w3-container ">
+
+    <!-- Coffee card -->
+    <div class="w3-card-4 w3-round-large w3-third w3-margin">
+
+      <header class="w3-container w3-theme w3-round-large">
+        <h1>Coffee status</h1>
+        <i class="fa-solid fa-mug-saucer w3-jumbo"></i>
+      </header>
+      
+      <div class="w3-container">
+        <p id="CoffeeStatus">Coffee status: </p>
+        <p id="coffeeDescription">Coffee description: </p>
+        <p id="CoffeeLevel">Current coffee level: </p>
+        <p id="CoffeeTemperature">Current coffee temperature: </p>
+      </div>
+      
+      </div>
+      <!-- Weather card -->
+    <div class="w3-card-4 w3-round-large w3-third w3-margin">
+
+      <header class="w3-container w3-theme w3-round-large">
+        
+        <h1>Weather</h1>
+        <i class="fa-solid fa-sun w3-jumbo"></i>
+      </header>
+      
+      <div class="w3-container">
+        <p id ="Latitude">Latitude: </p>
+        <p id ="Longitude">Longitude: </p>
+        <h1 id ="Temperature"> </h1>
+      </div>
+      
+      </div>
+      <!-- Time card -->
+    <div class="w3-card-4 w3-round-large w3-third w3-margin">
+      <header class="w3-container w3-theme w3-round-large">
+        <h1>Time</h1>
+        <i class="fa-solid fa-clock w3-jumbo"></i>
+      </header>
+      
+    <div class="w3-container">
+        <p id="DateText">Date: </p>
+        <p id="TimeText">Time: </p>
+    </div>
+
+    </div>
+      <!-- Notification card -->
+    <div class="w3-card-4 w3-round-large w3-margin w3-half ">
+      <header class="w3-container w3-theme w3-round-large">
+        <h1>Notifications</h1>
+        <i class="fa-solid fa-envelope w3-jumbo"></i>
+      </header>
+        
+      <div class="w3-container">
+        <p>Current notifications: </p>
+      </div>
+    </div>
+  </div>
+
+<!-- Footer -->
+<div class="w3-container w3-theme-d5 w3-center w3-bottom">
+  <h5>Property of TVRaiser some rights reserved</h5>
+</div> 
+
+
+</body>
+<script src="js/Updates.js"></script>
+</html>

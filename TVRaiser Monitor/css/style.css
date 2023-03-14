@@ -1,0 +1,19 @@
+body{        
+    padding-top: 60px;
+    padding-bottom: 40px;
+    background-color: rgb(255, 255, 255)
+}
+
+#Sidebar{
+    width: 15%;
+}
+#Temperature{
+    font-size: 100px;
+    padding: 50px;
+    text-align: center;
+}
+
+#SideBarClose{
+    padding: 19px;
+    font-size: x-large;
+}
