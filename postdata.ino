@@ -2,13 +2,10 @@
 #include <WiFi.h>
 
 
-//const char* ssid = "holy spot";
-//const char* password = "12345678";
+const char* ssid = "wifi_SSID";
+const char* password = "WIFI_password";
 
-const char* ssid = "nethit mesh private";
-const char* password = "NHlangaton2020";
-
-const char *post_url = "http://bezainternational.org/tvr/sensor.php"; 
+const char *post_url = "http://SERVER_NAME/sensor.php"; 
 const char *post_data = "title=1&content=0";  
 
 bool internet_connected = false;
