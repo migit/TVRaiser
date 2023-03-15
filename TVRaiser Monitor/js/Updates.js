@@ -1,3 +1,7 @@
+//Variables
+var LastBrewed = 0;
+var JsonLength = 0;
+var TimerInterval = 200;
 //Json fetch functions
 //Weather
 function weather() {
@@ -10,20 +14,31 @@ function weather() {
                         document.getElementById("Temperature").innerHTML = json.current_weather.temperature+"°C";
               })();
         }
-//Coffee
+//Coffee side function
+function CoffeeSide() {
+        TimerInterval = 10;
+        document.getElementById("CoffeeIcon").classList.remove("fa-shake");
+        document.getElementById("CoffeeStatus").style.color = "Red";
+        document.getElementById("CoffeeStatus").innerHTML = "Idle";
+        //document.getElementById("coffeeDescription").innerHTML = "Coffee is not being brewed";
+}
+
+//Coffee main function
 function Coffee() {
         //Updates the coffee status
         (async () => {
                 const res = await fetch(`https://bezainternational.org/tvr/`);
                 const json = await res.json();
-                        if (json.disable == 0) {
-                        document.getElementById("CoffeeStatus").innerHTML = "Coffee status: "+json.title;
-                        document.getElementById("CoffeeDescription").innerHTML = json.content;
-                        }
-                        else if (json.disable == 1) {
-                        document.getElementById("CoffeeStatus").innerHTML = "Coffee disabled";
-                        document.getElementById("CoffeeDescription").innerHTML = "Coffee is disabled";
-                        }     
+                        JsonLength = json.length - 1;
+                        if (LastBrewed != json[JsonLength].id) {
+                                LastBrewed = json[JsonLength].id;
+                                document.getElementById("CoffeeIcon").classList.add("fa-shake");
+                                document.getElementById("CoffeeStatus").style.color = "Green";
+                                document.getElementById("CoffeeStatus").innerHTML = "Ready";
+                                //document.getElementById("coffeeDescription").innerHTML = json[0].content;
+                                TimerInterval = 20000;
+                                setTimeout(CoffeeSide, 20000);
+                }
               })();
         }
 
@@ -39,7 +54,7 @@ setInterval(function() {
       //Time functions
       document.getElementById("TimeText").innerHTML = "Time: "+time;
       document.getElementById("DateText").innerHTML = "Date: "+date;
-              }, 1000);
+              }, 100);
 
 //5 minute updates
 setInterval(function() {
@@ -47,7 +62,7 @@ setInterval(function() {
         weather();
         //Updates the coffee status every 5 minutes
         Coffee();
-              }, 300000);
+              }, TimerInterval); //300000 = 5 minutes
 
 
 //On load

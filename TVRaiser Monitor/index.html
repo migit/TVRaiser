@@ -27,20 +27,21 @@
   </div>
 
   <div class="w3-overlay" onclick="SideB_Close()" style="cursor:pointer" id="myOverlay"></div>
-  <p> </p>
   <!-- Main page -->
-  <div class="w3-container ">
-
+  <div id="CardHolder" class="w3-container ">
+    <script src="js/Create.js"></script>
     <!-- Coffee card -->
+    
     <div class="w3-card-4 w3-round-large w3-third w3-margin">
 
       <header class="w3-container w3-theme w3-round-large">
         <h1>Coffee status</h1>
-        <i class="fa-solid fa-mug-saucer w3-jumbo"></i>
+        <i id="CoffeeIcon" class="fa-solid fa-mug-saucer w3-jumbo w3-margin"></i>
       </header>
       
       <div class="w3-container">
-        <p id="CoffeeStatus">Coffee status: </p>
+        <p style="float:left">Coffee status: </p>
+        <p id="CoffeeStatus">idle</p>
         <p id="coffeeDescription">Coffee description: </p>
         <p id="CoffeeLevel">Current coffee level: </p>
         <p id="CoffeeTemperature">Current coffee temperature: </p>
@@ -48,12 +49,12 @@
       
       </div>
       <!-- Weather card -->
-    <div class="w3-card-4 w3-round-large w3-third w3-margin">
+    <div class="w3-card-4 w3-round-large w3-half w3-margin">
 
       <header class="w3-container w3-theme w3-round-large">
         
         <h1>Weather</h1>
-        <i class="fa-solid fa-sun w3-jumbo"></i>
+        <i style="--fa-animation-duration: 15s;" class="fa-spin fa-solid fa-sun w3-jumbo w3-margin"></i>
       </header>
       
       <div class="w3-container">
@@ -67,12 +68,12 @@
     <div class="w3-card-4 w3-round-large w3-third w3-margin">
       <header class="w3-container w3-theme w3-round-large">
         <h1>Time</h1>
-        <i class="fa-solid fa-clock w3-jumbo"></i>
+        <i class="fa-solid fa-clock w3-jumbo w3-margin"></i>
       </header>
       
     <div class="w3-container">
-        <p id="DateText">Date: </p>
-        <p id="TimeText">Time: </p>
+        <p id="DateText" class="w3-xxxlarge">Date: </p>
+        <p id="TimeText" class="w3-xxxlarge">Time: </p>
     </div>
 
     </div>
@@ -80,7 +81,7 @@
     <div class="w3-card-4 w3-round-large w3-margin w3-half ">
       <header class="w3-container w3-theme w3-round-large">
         <h1>Notifications</h1>
-        <i class="fa-solid fa-envelope w3-jumbo"></i>
+        <i class="fa-solid fa-bell w3-jumbo w3-margin"></i>
       </header>
         
       <div class="w3-container">
