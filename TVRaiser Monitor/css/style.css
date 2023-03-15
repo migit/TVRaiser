@@ -17,6 +17,13 @@ div {
     justify-content: space-between;
   }
 
+#Banner{
+    border-bottom: 4px solid rgb(0, 0, 0);
+}
+#MainSideBarButton{
+    float: left;
+}
+
 #Sidebar{
     width: 15%;
 }

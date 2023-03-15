@@ -9,9 +9,12 @@ function weather() {
         (async () => {
                 const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=60.81&longitude=23.62&current_weather=true&timezone=auto`);
                 const json = await res.json();
-                        document.getElementById("Latitude").innerHTML = "latitude: "+json.latitude;
-                        document.getElementById("Longitude").innerHTML = "longitude: "+json.longitude;
-                        document.getElementById("Temperature").innerHTML = json.current_weather.temperature+"°C";
+                        document.getElementById("Weather_Card_content_0").innerHTML = "Weathercode: "+json.current_weather.weathercode;
+                        document.getElementById("Weather_Card_content_1").innerHTML = json.current_weather.temperature+"°C";
+                        document.getElementById("Weather_Card_content_2").innerHTML = "longitude: "+json.longitude;
+                        document.getElementById("Weather_Card_content_3").innerHTML = "latitude: "+json.latitude;
+                        document.getElementById("Weather_Card_content_1").style.textAlign = "center";
+                        document.getElementById("Weather_Card_content_1").style.fontSize = "60px";
               })();
         }
 //Coffee side function
@@ -27,7 +30,7 @@ function CoffeeSide() {
 function Coffee() {
         //Updates the coffee status
         (async () => {
-                const res = await fetch(`https://SERVER_NAME/tvr/`);
+                const res = await fetch(`https://bezainternational.org/tvr/`);
                 const json = await res.json();
                         JsonLength = json.length - 1;
                         if (LastBrewed != json[JsonLength].id) {
@@ -35,6 +38,7 @@ function Coffee() {
                                 document.getElementById("CoffeeIcon").classList.add("fa-shake");
                                 document.getElementById("CoffeeStatus").style.color = "Green";
                                 document.getElementById("CoffeeStatus").innerHTML = "Ready";
+                                document.getElementById("Coffee").play();
                                 //document.getElementById("coffeeDescription").innerHTML = json[0].content;
                                 TimerInterval = 20000;
                                 setTimeout(CoffeeSide, 20000);
@@ -52,8 +56,8 @@ setInterval(function() {
       var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
       var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
       //Time functions
-      document.getElementById("TimeText").innerHTML = "Time: "+time;
-      document.getElementById("DateText").innerHTML = "Date: "+date;
+      document.getElementById("Time_Card_content_0").innerHTML = "Time: "+time;
+      document.getElementById("Time_Card_content_1").innerHTML = "Date: "+date;
               }, 100);
 
 //5 minute updates
