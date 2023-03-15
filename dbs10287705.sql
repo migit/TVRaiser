@@ -2,7 +2,7 @@
 -- version 4.9.10
 -- https://www.phpmyadmin.net/
 --
--- Host: db5012226121.hosting-data.io
+
 -- Generation Time: Mar 15, 2023 at 12:53 PM
 -- Server version: 8.0.26
 -- PHP Version: 7.0.33-0+deb9u12
