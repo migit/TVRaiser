@@ -14,7 +14,7 @@ function weather() {
 function Coffee() {
         //Updates the coffee status
         (async () => {
-                const res = await fetch(`https://bezainternational.org/tvr/`);
+                const res = await fetch(`https://SERVER_NAME/tvr/`);
                 const json = await res.json();
                         if (json.disable == 0) {
                         document.getElementById("CoffeeStatus").innerHTML = "Coffee status: "+json.title;
