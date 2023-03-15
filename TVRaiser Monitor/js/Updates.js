@@ -27,7 +27,7 @@ function CoffeeSide() {
 function Coffee() {
         //Updates the coffee status
         (async () => {
-                const res = await fetch(`https://bezainternational.org/tvr/`);
+                const res = await fetch(`https://SERVER_NAME/tvr/`);
                 const json = await res.json();
                         JsonLength = json.length - 1;
                         if (LastBrewed != json[JsonLength].id) {
