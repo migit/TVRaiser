@@ -16,6 +16,12 @@ div {
     display: block;
     justify-content: space-between;
   }
+i {
+    font-size: 30px;
+    font-style: italic;
+    font-weight: 10em;
+    color: gray;
+  }
 
 #Banner{
     border-bottom: 4px solid rgb(0, 0, 0);

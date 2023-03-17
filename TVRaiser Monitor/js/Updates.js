@@ -20,9 +20,8 @@ function weather() {
 //Coffee side function
 function CoffeeSide() {
         TimerInterval = 10;
-        document.getElementById("CoffeeIcon").classList.remove("fa-shake");
-        document.getElementById("CoffeeStatus").style.color = "Red";
-        document.getElementById("CoffeeStatus").innerHTML = "Idle";
+        document.getElementById("Coffee_status_Card_icon").classList.remove("fa-shake");
+        document.getElementById("Coffee_status_Card_content_0").innerHTML = "Status: "+"<i style = 'color: Grey'>Idle</i>";
         //document.getElementById("coffeeDescription").innerHTML = "Coffee is not being brewed";
 }
 
@@ -34,10 +33,13 @@ function Coffee() {
                 const json = await res.json();
                         JsonLength = json.length - 1;
                         if (LastBrewed != json[JsonLength].id) {
+                                if (LastBrewed == null) {
+                                        LastBrewed = json[JsonLength].id;
+                                }
                                 LastBrewed = json[JsonLength].id;
-                                document.getElementById("CoffeeIcon").classList.add("fa-shake");
-                                document.getElementById("CoffeeStatus").style.color = "Green";
-                                document.getElementById("CoffeeStatus").innerHTML = "Ready";
+                                document.getElementById("Coffee_status_Card_content_1").innerHTML += "<i>"+json[JsonLength].content+"</i>";
+                                document.getElementById("Coffee_status_Card_icon").classList.add("fa-shake");
+                                document.getElementById("Coffee_status_Card_content_0").innerHTML = "Status: "+"<i style = 'color: green'>Ready</i>";
                                 document.getElementById("Coffee").play();
                                 //document.getElementById("coffeeDescription").innerHTML = json[0].content;
                                 TimerInterval = 20000;

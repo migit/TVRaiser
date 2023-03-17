@@ -69,7 +69,7 @@ function CreateCard(CardHeader, CardContent = [], CardSize, CardIcon) {
     }
     //Used to create card div
     let IdText = CardHeader.replace(/ /g, "_");
-    document.write('<div id="'+IdText+"_Card"+'" class="w3-card-4 w3-round-large w3-margin '+CardSize+' "> <header id="'+IdText+"_Card_header"+'" class="w3-container w3-theme w3-round-large"> <h1 id="'+IdText+"_Card_title"+'">'+CardHeader+'</h1> <i id="'+IdText+"_Card_icon"+'" class="'+CardIcon+' w3-margin w3-jumbo"></i> </header> <div id="'+IdText+"_Card_container"+'" class="w3-container"> </div> </div> </div>');
+    document.getElementById('CardHolder').innerHTML += '<div id="'+IdText+"_Card"+'" class="w3-card-4 w3-round-large w3-margin '+CardSize+' "> <header id="'+IdText+"_Card_header"+'" class="w3-container w3-theme w3-round-large"> <h1 id="'+IdText+"_Card_title"+'">'+CardHeader+'</h1> <p id="'+IdText+"_Card_icon"+'" class="'+CardIcon+' w3-margin w3-jumbo"></p> </header> <div id="'+IdText+"_Card_container"+'" class="w3-container"> </div> </div> </div>';
     //Used to create card content
     CardContent.forEach(element => {
         document.getElementById(IdText+'_Card_container').innerHTML += "<p id="+IdText+"_Card_content_"+i+">"+CardContent[i]+"</p>";
@@ -79,7 +79,7 @@ function CreateCard(CardHeader, CardContent = [], CardSize, CardIcon) {
 }
 
 //Usage of CreateCard function first parameter is the card header, second parameter is the card content, third parameter is the card size, fourth parameter is the card icon
-CreateCard("Coffee status", ["Coffee status: ", "Coffee description: ", "Current coffee level: ", "Current coffee temperature:"], "Medium", "CoffeeMug");
-CreateCard("Weather", ["Weather status: ", "Current temperature: ", "Longitude: ", "Latitude: "], "Medium", "Sun");
+CreateCard("Coffee status", ["Coffee status: ", "Description: ", "Level: <i>Full</i>", "Temperature: <i>160<sup>o</sup>C</i>"], "Medium", "CoffeeMug");
+CreateCard("Weather", ["Weather status: ", "Current temperature: ", "Longitude: ", "Latitude: "], "Small", "Sun");
 CreateCard("Time", ["Current time: ", "Current date: "], "Medium", "Clock");
 CreateCard("Notifications", ["Notifications: "], "Medium", "Bell");
