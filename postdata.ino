@@ -6,11 +6,11 @@ const char* ssid = "wifi_SSID";
 const char* password = "WIFI_password";
 
 const char *post_url = "http://SERVER_NAME/sensor.php"; 
-const char *post_data = "title=1&content=0";  
+const char *post_data = "temp=160&level=100%"; 
 
 bool internet_connected = false;
 const int buttonPin = 32;
-const int ledPin =  2;
+const int ledPin =  14;
 int buttonState = 0;
 
 void setup()
