@@ -1,8 +1,5 @@
 <?php
-// database connection code
-// $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
-
-$con = mysqli_connect('db5012226121.hosting-data.io', 'dbu5695550', 'DFDGDSggddg98##_8','dbs10287705');
+$con = mysqli_connect('host_name', 'database_user', 'database_password','database_name');
 
 $txtTitle = $_POST['txtTitle'];
 $txtContent = $_POST['txtContent'];
