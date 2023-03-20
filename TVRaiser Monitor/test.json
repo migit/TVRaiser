@@ -1,0 +1,39 @@
+[
+    {
+        "id": 1,
+        "CardHeader": "Coffee status",
+        "CardContent": ["Status: ", "Description: ", "Level: <i>Full</i>", "Temperature: <i>160<sup>o</sup>C</i>"],
+        "CardSize": "Medium",
+        "CardIcon": "CoffeeMug",
+        "CardAnimation": "None",
+        "Function": "CoffeeStatus"
+    },
+    {
+        "id": 2,
+        "CardHeader": "Weather",
+        "CardContent": ["Weather status: ", "Current temperature: ", "Longitude: ", "Latitude: "],
+        "CardSize": "Small",
+        "CardIcon": "Sun",
+        "CardAnimation": "Spin",
+        "Function": "WeatherStatus"
+    },
+    {
+        "id": 3,
+        "CardHeader": "Time",
+        "CardContent": ["Current time: ", "Current date: "],
+        "CardSize": "Medium",
+        "CardIcon": "Clock",
+        "CardAnimation": "None",
+        "Function": "TimeStatus"
+    },
+    {
+        "id": 4,
+        "CardHeader": "Notifications",
+        "CardContent": ["Notifications: "],
+        "CardSize": "Medium",
+        "CardIcon": "Bell",
+        "CardAnimation": "None",
+        "Function": "NotificationsStatus"
+
+    }
+]

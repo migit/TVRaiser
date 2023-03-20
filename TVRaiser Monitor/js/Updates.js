@@ -1,8 +1,21 @@
 //Variables
+var Iteration = 0;
 var LastBrewed = 0;
 var JsonLength = 0;
 var TimerInterval = 200;
 //Json fetch functions
+function CardCreation() {
+        (async () => {
+                const res = await fetch(`test.json`);
+                const json = await res.json();
+                json.forEach(element => {
+                        console.log(json);
+                        CreateCard(json[Iteration].CardHeader, json[Iteration].CardContent, json[Iteration].CardSize, json[Iteration].CardIcon, json[Iteration].CardAnimation);
+                        Iteration++;
+                });           
+        })();
+        Iteration = 0;
+}
 //Weather
 function weather() {
         //Updates the weather
@@ -18,15 +31,15 @@ function weather() {
               })();
         }
 //Coffee side function
-function CoffeeSide() {
+function CoffeeSide(FirsCardSlot, CardIconSlot) {
         TimerInterval = 10;
-        document.getElementById("Coffee_status_Card_icon").classList.remove("fa-shake");
-        document.getElementById("Coffee_status_Card_content_0").innerHTML = "Status: "+"<i style = 'color: Grey'>Idle</i>";
+        document.getElementById(CardIconSlot).classList.remove("fa-shake");
+        document.getElementById(FirsCardSlot).innerHTML = "Status: "+"<i style = 'color: Grey'>Idle</i>";
         //document.getElementById("coffeeDescription").innerHTML = "Coffee is not being brewed";
 }
 
 //Coffee main function
-function Coffee() {
+function Coffee(FirsCardSlot, SecondCardSlot, CardIconSlot) {
         //Updates the coffee status
         (async () => {
                 const res = await fetch(`https://bezainternational.org/tvr/`);
@@ -37,13 +50,13 @@ function Coffee() {
                                         LastBrewed = json[JsonLength].id;
                                 }
                                 LastBrewed = json[JsonLength].id;
-                                document.getElementById("Coffee_status_Card_content_1").innerHTML += "<i>"+json[JsonLength].content+"</i>";
-                                document.getElementById("Coffee_status_Card_icon").classList.add("fa-shake");
-                                document.getElementById("Coffee_status_Card_content_0").innerHTML = "Status: "+"<i style = 'color: green'>Ready</i>";
+                                document.getElementById(SecondCardSlot).innerHTML += "<i>"+json[JsonLength].content+"</i>";
+                                document.getElementById(CardIconSlot).classList.add("fa-shake");
+                                document.getElementById(FirsCardSlot).innerHTML = "Status: "+"<i style = 'color: green'>Ready</i>";
                                 document.getElementById("Coffee").play();
                                 //document.getElementById("coffeeDescription").innerHTML = json[0].content;
                                 TimerInterval = 20000;
-                                setTimeout(CoffeeSide, 20000);
+                                setTimeout(CoffeeSide(), 20000);
                 }
               })();
         }
@@ -72,5 +85,6 @@ setInterval(function() {
 
 
 //On load
+CardCreation();
 weather();
 Coffee();
