@@ -1,20 +1,15 @@
 <?php
-// database connection code
-// $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
+$con = mysqli_connect('host_name', 'database_user', 'database_password','database_name');
 
-$con = mysqli_connect('db5012226121.hosting-data.io', 'dbu5695550', 'DFDGDSggddg98##_8','dbs10287705');
-
-$txtTitle = $_POST['txtTitle'];
-$txtContent = $_POST['txtContent'];
+$txtTitle = "Coffee is ready!";
+$txtContent = "Coffee has been brewed at temprature: "; //+ $_POST["temp"]; 
 $sql = "INSERT INTO `notification` (`id`, `title`, `content`) VALUES ('', '$txtTitle', '$txtContent')";
-
 $rs = mysqli_query($con, $sql);
-
 if($rs)
 {
 	echo "sensor data Inserted";
 }
+mysqli_close($con);
 
-echo $rs;
 
 ?>

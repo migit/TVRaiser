@@ -21,7 +21,7 @@ class Notifications extends ResourceController
      public function top()
      {
         $model = new NotificationModel();
-        $builder->selectMax('age');
+        $builder->selectMax('id');
         $query = $builder->get();
         
         $data = $model->findAll();
