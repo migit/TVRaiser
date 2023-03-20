@@ -9,10 +9,10 @@ function weather() {
         (async () => {
                 const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=60.81&longitude=23.62&current_weather=true&timezone=auto`);
                 const json = await res.json();
-                        document.getElementById("Weather_Card_content_0").innerHTML = "Weathercode: "+json.current_weather.weathercode;
+                        document.getElementById("Weather_Card_content_0").innerHTML = "Weathercode: <i>"+json.current_weather.weathercode+"</i>";
                         document.getElementById("Weather_Card_content_1").innerHTML = json.current_weather.temperature+"°C";
-                        document.getElementById("Weather_Card_content_2").innerHTML = "longitude: "+json.longitude;
-                        document.getElementById("Weather_Card_content_3").innerHTML = "latitude: "+json.latitude;
+                        document.getElementById("Weather_Card_content_2").innerHTML = "longitude: <i>"+json.longitude+"</i>";
+                        document.getElementById("Weather_Card_content_3").innerHTML = "latitude: <i>"+json.latitude+"</i>";
                         document.getElementById("Weather_Card_content_1").style.textAlign = "center";
                         document.getElementById("Weather_Card_content_1").style.fontSize = "60px";
               })();
@@ -58,15 +58,15 @@ setInterval(function() {
       var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
       var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
       //Time functions
-      document.getElementById("Time_Card_content_0").innerHTML = "Time: "+time;
-      document.getElementById("Time_Card_content_1").innerHTML = "Date: "+date;
+      document.getElementById("Time_Card_content_0").innerHTML = "Time: <i>"+time+"</i>";
+      document.getElementById("Time_Card_content_1").innerHTML = "Date: <i>"+date+"</i>";
               }, 100);
 
-//5 minute updates
+//2 minute updates
 setInterval(function() {
-        //Updates the weather every 5 minutes
+        //Updates the weather every 2 minutes
         weather();
-        //Updates the coffee status every 5 minutes
+        //Updates the coffee status every 2 minutes
         Coffee();
               }, TimerInterval); //300000 = 5 minutes
 
