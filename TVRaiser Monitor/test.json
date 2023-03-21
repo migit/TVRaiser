@@ -6,7 +6,11 @@
         "CardSize": "Medium",
         "CardIcon": "CoffeeMug",
         "CardAnimation": "None",
-        "Function": "CoffeeStatus"
+        "CardFunction": "CoffeeStatus",
+        "FirstCardSlot": "0",
+        "SecondCardSlot": "1",
+        "ThirdCardSlot": "2",
+        "FourthCardSlot": "3"
     },
     {
         "id": 2,
@@ -15,7 +19,11 @@
         "CardSize": "Small",
         "CardIcon": "Sun",
         "CardAnimation": "Spin",
-        "Function": "WeatherStatus"
+        "CardFunction": "WeatherStatus",
+        "FirstCardSlot": "0",
+        "SecondCardSlot": "1",
+        "ThirdCardSlot": "2",
+        "FourthCardSlot": "3"
     },
     {
         "id": 3,
@@ -24,7 +32,11 @@
         "CardSize": "Medium",
         "CardIcon": "Clock",
         "CardAnimation": "None",
-        "Function": "TimeStatus"
+        "CardFunction": "TimeStatus",
+        "FirstCardSlot": "0",
+        "SecondCardSlot": "1",
+        "ThirdCardSlot": "2",
+        "FourthCardSlot": "3"
     },
     {
         "id": 4,
@@ -33,7 +45,10 @@
         "CardSize": "Medium",
         "CardIcon": "Bell",
         "CardAnimation": "None",
-        "Function": "NotificationsStatus"
-
+        "CardFunction": "",
+        "FirstCardSlot": "0",
+        "SecondCardSlot": "1",
+        "ThirdCardSlot": "2",
+        "FourthCardSlot": "3"
     }
 ]
