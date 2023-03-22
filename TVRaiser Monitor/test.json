@@ -1,54 +1,74 @@
-[
-    {
-        "id": 1,
-        "CardHeader": "Coffee status",
-        "CardContent": ["Status: ", "Description: ", "Level: <i>Full</i>", "Temperature: <i>160<sup>o</sup>C</i>"],
-        "CardSize": "Medium",
-        "CardIcon": "CoffeeMug",
-        "CardAnimation": "None",
-        "CardFunction": "CoffeeStatus",
-        "FirstCardSlot": "0",
-        "SecondCardSlot": "1",
-        "ThirdCardSlot": "2",
-        "FourthCardSlot": "3"
-    },
-    {
-        "id": 2,
-        "CardHeader": "Weather",
-        "CardContent": ["Weather status: ", "Current temperature: ", "Longitude: ", "Latitude: "],
-        "CardSize": "Small",
-        "CardIcon": "Sun",
-        "CardAnimation": "Spin",
-        "CardFunction": "WeatherStatus",
-        "FirstCardSlot": "0",
-        "SecondCardSlot": "1",
-        "ThirdCardSlot": "2",
-        "FourthCardSlot": "3"
-    },
-    {
-        "id": 3,
-        "CardHeader": "Time",
-        "CardContent": ["Current time: ", "Current date: "],
-        "CardSize": "Medium",
-        "CardIcon": "Clock",
-        "CardAnimation": "None",
-        "CardFunction": "TimeStatus",
-        "FirstCardSlot": "0",
-        "SecondCardSlot": "1",
-        "ThirdCardSlot": "2",
-        "FourthCardSlot": "3"
-    },
-    {
-        "id": 4,
-        "CardHeader": "Notifications",
-        "CardContent": ["Notifications: "],
-        "CardSize": "Medium",
-        "CardIcon": "Bell",
-        "CardAnimation": "None",
-        "CardFunction": "",
-        "FirstCardSlot": "0",
-        "SecondCardSlot": "1",
-        "ThirdCardSlot": "2",
-        "FourthCardSlot": "3"
+{
+            "MainPage":
+            [
+                {
+                    "id": 1,
+                    "CardHeader": "Coffee status",
+                    "CardContent": ["Status: ", "Description: ", "Level: <i>Full</i>", "Temperature: <i>160<sup>o</sup>C</i>"],
+                    "CardSize": "Medium",
+                    "CardIcon": "CoffeeMug",
+                    "CardAnimation": "None",
+                    "CardFunction": "CoffeeStatus",
+                    "FirstCardSlot": "0",
+                    "SecondCardSlot": "1",
+                    "ThirdCardSlot": "2",
+                    "FourthCardSlot": "3"
+                },
+                {
+                    "id": 2,
+                    "CardHeader": "Weather",
+                    "CardContent": ["Weather status: ", "Current temperature: ", "Longitude: ", "Latitude: "],
+                    "CardSize": "Small",
+                    "CardIcon": "Sun",
+                    "CardAnimation": "Spin",
+                    "CardFunction": "WeatherStatus",
+                    "FirstCardSlot": "0",
+                    "SecondCardSlot": "1",
+                    "ThirdCardSlot": "2",
+                    "FourthCardSlot": "3"
+                },
+                {
+                    "id": 3,
+                    "CardHeader": "Time",
+                    "CardContent": ["Current time: ", "Current date: "],
+                    "CardSize": "Medium",
+                    "CardIcon": "Clock",
+                    "CardAnimation": "None",
+                    "CardFunction": "TimeStatus",
+                    "FirstCardSlot": "0",
+                    "SecondCardSlot": "1",
+                    "ThirdCardSlot": "2",
+                    "FourthCardSlot": "3"
+                },
+                {
+                    "id": 4,
+                    "CardHeader": "Notifications",
+                    "CardContent": ["Notifications: "],
+                    "CardSize": "Medium",
+                    "CardIcon": "Bell",
+                    "CardAnimation": "None",
+                    "CardFunction": null,
+                    "FirstCardSlot": "0",
+                    "SecondCardSlot": "1",
+                    "ThirdCardSlot": "2",
+                    "FourthCardSlot": "3"
+                }
+            ],
+            "Charts":
+            [
+                {
+                    "id": 1,
+                    "CardHeader": "Test",
+                    "CardContent": ["Status: ", "Description: ", "Level: <i>Full</i>", "Temperature: <i>160<sup>o</sup>C</i>"],
+                    "CardSize": "Medium",
+                    "CardIcon": "CoffeeMug",
+                    "CardAnimation": "None",
+                    "CardFunction": "CoffeeStatus",
+                    "FirstCardSlot": "0",
+                    "SecondCardSlot": "1",
+                    "ThirdCardSlot": "2",
+                    "FourthCardSlot": "3"
+                }
+            ]
+
     }
-]

@@ -1,5 +1,4 @@
 //Variables
-var Iteration = 0;
 var LastBrewed = 0;
 var JsonLength = 0;
 var TimerInterval = 200;
@@ -12,29 +11,32 @@ var TimeCardSlots = [];
 var CoffeeCardSlots = [];
 var WeatherCardSlots = [];
 //Json fetch functions
-function CardCreation() {
-  (async () => {
-    const res = await fetch(`test.json`);
-    const json = await res.json();
-    json.forEach((element) => {
-      console.log(json);
-      CreateCard(
-        json[Iteration].CardHeader,
-        json[Iteration].CardContent,
-        json[Iteration].CardSize,
-        json[Iteration].CardIcon,
-        json[Iteration].CardAnimation,
-        json[Iteration].CardFunction,
-        json[Iteration].FirstCardSlot,
-        json[Iteration].SecondCardSlot,
-        json[Iteration].ThirdCardSlot,
-        json[Iteration].FourthCardSlot
-      );
-      Iteration++;
-    });
-  })();
-  Iteration = 0;
+async function CardCreation(Page) {
+  document.getElementById("CardHolder").innerHTML = "";
+  //Fetches the json file
+  const res = await fetch(`test.json`);
+  const json = await res.json();
+  console.log(json);
+  const PageContent = json[Page];
+  let Iteration = 0;
+  PageContent.forEach((element) => {
+    CreateCard(
+      element.CardHeader,
+      element.CardContent,
+      element.CardSize,
+      element.CardIcon,
+      element.CardAnimation,
+      element.CardFunction,
+      element.FirstCardSlot,
+      element.SecondCardSlot,
+      element.ThirdCardSlot,
+      element.FourthCardSlot
+    );
+    Iteration++;
+  });
+  return PageContent;
 }
+
 //Weather
 function WeatherStatus(
   FirsCardSlot,
@@ -77,7 +79,6 @@ function CoffeeSide(FirsCardSlot, CardIconSlot) {
   document.getElementById(CardIconSlot).classList.remove("fa-shake");
   document.getElementById(FirsCardSlot).innerHTML =
     "Status: " + "<i style = 'color: Grey'>Idle</i>";
-  //document.getElementById("coffeeDescription").innerHTML = "Coffee is not being brewed";
 }
 
 //Coffee main function
@@ -103,7 +104,7 @@ function CoffeeStatus(
       document.getElementById(CardIconSlot).classList.add("fa-shake");
       document.getElementById(FirsCardSlot).innerHTML =
         "Status: " + "<i style = 'color: green'>Ready</i>";
-      document.getElementById("Coffee").play();
+      document.getElementById("Ding").play();
       TimerInterval = 20000;
       setTimeout(CoffeeSide, 20000, FirsCardSlot, CardIconSlot);
       if (CoffeeFTime == 0) {
@@ -191,6 +192,3 @@ setInterval(function () {
 }, TimerInterval); //300000 = 5 minutes
 
 //On load
-CardCreation();
-//weather();
-//Coffee();
