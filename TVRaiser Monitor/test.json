@@ -25,7 +25,7 @@
                     "FirstCardSlot": "0",
                     "SecondCardSlot": "1",
                     "ThirdCardSlot": "2",
-                    "FourthCardSlot": "3"
+                    "FourthCardSlot": "3" 
                 },
                 {
                     "id": 3,
@@ -64,6 +64,19 @@
                     "CardIcon": "CoffeeMug",
                     "CardAnimation": "None",
                     "CardFunction": "CoffeeStatus",
+                    "FirstCardSlot": "0",
+                    "SecondCardSlot": "1",
+                    "ThirdCardSlot": "2",
+                    "FourthCardSlot": "3"
+                },
+                {
+                    "id": 2,
+                    "CardHeader": "Testing",
+                    "CardContent": ["Notifications: "],
+                    "CardSize": "Medium",
+                    "CardIcon": "Bell",
+                    "CardAnimation": "None",
+                    "CardFunction": null,
                     "FirstCardSlot": "0",
                     "SecondCardSlot": "1",
                     "ThirdCardSlot": "2",

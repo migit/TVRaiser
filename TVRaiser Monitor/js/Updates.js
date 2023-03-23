@@ -2,6 +2,7 @@
 var LastBrewed = 0;
 var JsonLength = 0;
 var TimerInterval = 200;
+var CurrentPage = "MainPage";
 
 var CoffeeFTime = 0;
 var TimeFTime = 0;
@@ -12,6 +13,7 @@ var CoffeeCardSlots = [];
 var WeatherCardSlots = [];
 //Json fetch functions
 async function CardCreation(Page) {
+  CurrentPage = Page;
   document.getElementById("CardHolder").innerHTML = "";
   //Fetches the json file
   const res = await fetch(`test.json`);
@@ -76,7 +78,7 @@ function WeatherStatus(
 //Coffee side function
 function CoffeeSide(FirsCardSlot, CardIconSlot) {
   TimerInterval = 10;
-  document.getElementById(CardIconSlot).classList.remove("fa-shake");
+  CardIconSlot.classList.remove("fa-shake");
   document.getElementById(FirsCardSlot).innerHTML =
     "Status: " + "<i style = 'color: Grey'>Idle</i>";
 }
@@ -99,9 +101,9 @@ function CoffeeStatus(
         LastBrewed = json[JsonLength].id;
       }
       LastBrewed = json[JsonLength].id;
-      document.getElementById(SecondCardSlot).innerHTML +=
+      document.getElementById(SecondCardSlot).innerHTML =
         "<i>" + json[JsonLength].content + "</i>";
-      document.getElementById(CardIconSlot).classList.add("fa-shake");
+      CardIconSlot.classList.add("fa-shake");
       document.getElementById(FirsCardSlot).innerHTML =
         "Status: " + "<i style = 'color: green'>Ready</i>";
       document.getElementById("Ding").play();
@@ -152,9 +154,44 @@ function TimeStatus(
 
 //Update functions
 
-//Updates every second
-setInterval(function () {
-  //Date functions
+//Class watcher to watch for json changes
+class JsonWatcher {
+  constructor(jsonObj, keyToWatch, callback, pollInterval = 1000) {
+    this.jsonObj = jsonObj;
+    this.keyToWatch = keyToWatch;
+    this.callback = callback;
+    this.pollInterval = pollInterval;
+    this.currentValue = jsonObj[keyToWatch];
+    this.timerId = null;
+  }
+  //Starts the watcher
+  start() {
+    if (this.timerId) {
+      console.warn("The watcher is already running");
+      return;
+    }
+    this.timerId = setInterval(() => {
+      if (this.jsonObj[this.keyToWatch] !== this.currentValue) {
+        this.currentValue = this.jsonObj[this.keyToWatch];
+        this.callback(this.currentValue);
+      }
+    }, this.pollInterval);
+  }
+  //Stops the watcher
+  stop() {
+    clearInterval(this.timerId);
+    this.timerId = null;
+  }
+}
+/*
+const watcher = new JsonWatcher(jsonObj, "page", onPageChange, 500);
+watcher.start();
+*/
+const TIME_UPDATE_INTERVAL = 1000; // 1 second
+const WEATHER_UPDATE_INTERVAL = 120000; // 2 minutes
+const COFFEE_UPDATE_INTERVAL = 120000; // 2 minutes
+
+function updateTime() {
   if (TimeFTime == 1) {
     TimeStatus(
       TimeCardSlots[0],
@@ -164,11 +201,9 @@ setInterval(function () {
       TimeCardSlots[4]
     );
   }
-}, 100);
-//2 minute updates
-setInterval(function () {
-  //Updates the weather every 2 minutes
+}
 
+function updateWeather() {
   if (WeatherFTime == 1) {
     WeatherStatus(
       WeatherCardSlots[0],
@@ -178,8 +213,9 @@ setInterval(function () {
       WeatherCardSlots[4]
     );
   }
+}
 
-  //Updates the coffee status every 2 minutes
+function updateCoffee() {
   if (CoffeeFTime == 1) {
     CoffeeStatus(
       CoffeeCardSlots[0],
@@ -189,6 +225,12 @@ setInterval(function () {
       CoffeeCardSlots[4]
     );
   }
-}, TimerInterval); //300000 = 5 minutes
+}
 
-//On load
+setInterval(() => {
+  updateTime();
+  updateCoffee();
+  if (Date.now() % WEATHER_UPDATE_INTERVAL === 0) {
+    updateWeather();
+  }
+}, TIME_UPDATE_INTERVAL);

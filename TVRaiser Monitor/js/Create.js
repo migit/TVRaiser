@@ -11,7 +11,7 @@ function CreateMain(Page) {
   FifthSideBarClick = "Recreation";
 
   document.getElementById("main").innerHTML +=
-    ' <!-- SideBar --> <div class="w3-sidebar w3-bar-block w3-border-right w3-black w3-animate-left w3-top" style="display: none; z-index: 5" id="Sidebar" > <button onclick="SideB_Close()" id="SideBarClose" class="w3-bar-item w3-theme" > Close &times; </button> <button onclick=CreateCard("' +
+    ' <!-- SideBar --> <div class="w3-sidebar w3-bar-block w3-border-right w3-black w3-animate-left w3-top" style="display: none; z-index: 5" id="Sidebar" > <button onclick="SideB_Close()" id="SideBarClose" class="w3-bar-item w3-theme" > Close &times; </button> <button onclick=CardCreation("' +
     FirstSideBarClick +
     '") class="w3-bar-item w3-button">Main Page</button> <button onclick=CardCreation("' +
     SecondSideBarClick +
@@ -105,17 +105,21 @@ function CreateCard(
   ThirdCardSlot = IdText + "_Card_content_" + ThirdCardSlot;
   FourthCardSlot = IdText + "_Card_content_" + FourthCardSlot;
   //used to create function to card
-  if (CardFunction != null) {
-    document.getElementById(IdText + "_Card").innerHTML +=
-      "<script>" +
-      window[CardFunction](
-        FirsCardSlot,
-        SecondCardSlot,
-        ThirdCardSlot,
-        FourthCardSlot,
-        IdText + "_Card_icon"
-      ) +
-      "</script>";
+  if (CardFunction) {
+    const cardElement = document.getElementById(`${IdText}_Card`);
+    const iconElement = document.getElementById(`${IdText}_Card_icon`);
+    const script = window[CardFunction](
+      FirsCardSlot,
+      SecondCardSlot,
+      ThirdCardSlot,
+      FourthCardSlot,
+      iconElement
+    );
+    if (script) {
+      const scriptElement = document.createElement("script");
+      scriptElement.textContent = script;
+      cardElement.appendChild(scriptElement);
+    }
   }
 }
 //Usage of CreateCard function first parameter is the card header, second parameter is the card content, third parameter is the card size, fourth parameter is the card icon
