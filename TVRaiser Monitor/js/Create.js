@@ -1,5 +1,8 @@
 //variables
 var i = 0;
+
+let CreatedCards = [];
+
 //Function to create main elements
 function CreateMain(Page) {
   //Create main elements
@@ -36,6 +39,11 @@ function CreateCard(
   ThirdCardSlot = null,
   FourthCardSlot = null
 ) {
+  //Variables
+  var Differentiator = 0;
+
+  var CardProcessing = CardHeader;
+
   //Convert CardSize variables to right format
   const cardSizeMap = {
     None: "w3-hide",
@@ -79,7 +87,14 @@ function CreateCard(
 
   CardAnimation = cardAnimationMap[CardAnimation] || "";
   //Used to create card divs
-  let IdText = CardHeader.replace(/ /g, "_");
+  while (CreatedCards.includes(CardProcessing)) {
+    CardProcessing = CardHeader + "_" + Differentiator;
+    Differentiator++;
+  }
+
+  Differentiator = 0;
+  CreatedCards.push(CardProcessing);
+  let IdText = CardProcessing.replace(/ /g, "_");
   const cardHtml = `
   <div id="${IdText}_Card" class="w3-card-4 w3-round-large w3-margin ${CardSize}">
     <header id="${IdText}_Card_header" class="w3-container w3-theme w3-round-large">

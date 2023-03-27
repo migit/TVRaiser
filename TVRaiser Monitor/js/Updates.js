@@ -41,38 +41,51 @@ async function CardCreation(Page) {
 
 //Weather
 function WeatherStatus(
-  FirsCardSlot,
-  SecondCardSlot,
-  ThirdCardSlot,
-  FourthCardSlot,
-  CardIconSlot
+  FirsCardSlot = null,
+  SecondCardSlot = null,
+  ThirdCardSlot = null,
+  FourthCardSlot = null,
+  CardIconSlot = null
 ) {
   //Updates the weather
   (async () => {
-    const res = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=60.81&longitude=23.62&current_weather=true&timezone=auto`
-    );
-    const json = await res.json();
-    document.getElementById(FirsCardSlot).innerHTML =
-      "Weathercode: <i>" + json.current_weather.weathercode + "</i>";
-    document.getElementById(SecondCardSlot).innerHTML =
-      json.current_weather.temperature + "°C";
-    document.getElementById(ThirdCardSlot).innerHTML =
-      "longitude: <i>" + json.longitude + "</i>";
-    document.getElementById(FourthCardSlot).innerHTML =
-      "latitude: <i>" + json.latitude + "</i>";
-    document.getElementById(SecondCardSlot).style.textAlign = "center";
-    document.getElementById(SecondCardSlot).style.fontSize = "60px";
-    if (WeatherFTime == 0) {
-      WeatherFTime = 1;
-      WeatherCardSlots = [
+    if (FirsCardSlot != null) {
+      WeatherCardSlots.push(
         FirsCardSlot,
         SecondCardSlot,
         ThirdCardSlot,
         FourthCardSlot,
-        CardIconSlot,
-      ];
+        CardIconSlot
+      );
     }
+    let First = 0;
+    let Second = 1;
+    let Third = 2;
+    let Fourth = 3;
+    let Fifth = 4;
+    const res = await fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=60.81&longitude=23.62&current_weather=true&timezone=auto`
+    );
+    const json = await res.json();
+    for (let i = 0; i < WeatherCardSlots.length; i + 5) {
+      document.getElementById(WeatherCardSlots[First]).innerHTML =
+        "Weathercode: <i>" + json.current_weather.weathercode + "</i>";
+      document.getElementById(WeatherCardSlots[Second]).innerHTML =
+        json.current_weather.temperature + "°C";
+      document.getElementById(WeatherCardSlots[Third]).innerHTML =
+        "longitude: <i>" + json.longitude + "</i>";
+      document.getElementById(WeatherCardSlots[Fourth]).innerHTML =
+        "latitude: <i>" + json.latitude + "</i>";
+      document.getElementById(WeatherCardSlots[Second]).style.textAlign =
+        "center";
+      document.getElementById(WeatherCardSlots[Second]).style.fontSize = "60px";
+      First = First + 5;
+      Second = Second + 5;
+      Third = Third + 5;
+      Fourth = Fourth + 5;
+      Fifth = Fifth + 5;
+    }
+    WeatherFTime = 1;
   })();
 }
 //Coffee side function
@@ -85,14 +98,20 @@ function CoffeeSide(FirsCardSlot, CardIconSlot) {
 
 //Coffee main function
 function CoffeeStatus(
-  FirsCardSlot,
-  SecondCardSlot,
-  ThirdCardSlot,
-  FourthCardSlot,
-  CardIconSlot
+  FirsCardSlot = null,
+  SecondCardSlot = null,
+  ThirdCardSlot = null,
+  FourthCardSlot = null,
+  CardIconSlot = null
 ) {
   //Updates the coffee status
   (async () => {
+    if (FirsCardSlot != null) {
+      CoffeeCardSlots.push(FirsCardSlot, SecondCardSlot, CardIconSlot);
+    }
+    let First = 0;
+    let Second = 1;
+    let Fifth = 4;
     const res = await fetch(`https://bezainternational.org/tvr/`);
     const json = await res.json();
     JsonLength = json.length - 1;
@@ -100,36 +119,39 @@ function CoffeeStatus(
       if (LastBrewed == null) {
         LastBrewed = json[JsonLength].id;
       }
-      LastBrewed = json[JsonLength].id;
-      document.getElementById(SecondCardSlot).innerHTML =
-        "<i>" + json[JsonLength].content + "</i>";
-      CardIconSlot.classList.add("fa-shake");
-      document.getElementById(FirsCardSlot).innerHTML =
-        "Status: " + "<i style = 'color: green'>Ready</i>";
-      document.getElementById("Ding").play();
-      TimerInterval = 20000;
-      setTimeout(CoffeeSide, 20000, FirsCardSlot, CardIconSlot);
-      if (CoffeeFTime == 0) {
-        CoffeeFTime = 1;
-        CoffeeCardSlots = [
-          FirsCardSlot,
-          SecondCardSlot,
-          ThirdCardSlot,
-          FourthCardSlot,
-          CardIconSlot,
-        ];
+      for (let i = 0; i < CoffeeCardSlots.length; i + 5) {
+        LastBrewed = json[JsonLength].id;
+        document.getElementById(CoffeeCardSlots[Second]).innerHTML =
+          "Description: " + "<i>" + json[JsonLength].content + "</i>";
+        CoffeeCardSlots[Fifth].classList.add("fa-shake");
+        document.getElementById(CoffeeCardSlots[First]).innerHTML =
+          "Status: " + "<i style = 'color: green'>Ready</i>";
+        document.getElementById("Ding").play();
+        TimerInterval = 20000;
+        setTimeout(
+          CoffeeSide,
+          TimerInterval,
+          CoffeeCardSlots[First],
+          CoffeeCardSlots[Fifth]
+        );
+
+        First = First + 5;
+        Second = Second + 5;
+        Fifth = Fifth + 5;
       }
     }
+
+    CoffeeFTime = 1;
   })();
 }
 
 //Time functions
 function TimeStatus(
-  FirsCardSlot,
-  SecondCardSlot,
-  ThirdCardSlot,
-  FourthCardSlot,
-  CardIconSlot
+  FirsCardSlot = null,
+  SecondCardSlot = null,
+  ThirdCardSlot = null,
+  FourthCardSlot = null,
+  CardIconSlot = null
 ) {
   //Updates the time
   var today = new Date();
@@ -137,19 +159,20 @@ function TimeStatus(
     today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
   var time =
     today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  document.getElementById(FirsCardSlot).innerHTML = "Time: <i>" + time + "</i>";
-  document.getElementById(SecondCardSlot).innerHTML =
-    "Date: <i>" + date + "</i>";
-  if (TimeFTime == 0) {
-    TimeFTime = 1;
-    TimeCardSlots = [
-      FirsCardSlot,
-      SecondCardSlot,
-      ThirdCardSlot,
-      FourthCardSlot,
-      CardIconSlot,
-    ];
+  for (let i = 0; i < TimeCardSlots.length; i + 5) {
+    if (FirsCardSlot != null) {
+      TimeCardSlots.push(FirsCardSlot, SecondCardSlot);
+    }
+    let First = 0;
+    let Second = 1;
+    document.getElementById(TimeCardSlots[First]).innerHTML =
+      "Time: <i>" + time + "</i>";
+    document.getElementById(TimeCardSlots[Second]).innerHTML =
+      "Date: <i>" + date + "</i>";
+    First = First + 5;
+    Second = Second + 5;
   }
+  TimeFTime = 1;
 }
 
 //Update functions
@@ -193,43 +216,25 @@ const COFFEE_UPDATE_INTERVAL = 120000; // 2 minutes
 
 function updateTime() {
   if (TimeFTime == 1) {
-    TimeStatus(
-      TimeCardSlots[0],
-      TimeCardSlots[1],
-      TimeCardSlots[2],
-      TimeCardSlots[3],
-      TimeCardSlots[4]
-    );
+    TimeStatus();
   }
 }
 
 function updateWeather() {
   if (WeatherFTime == 1) {
-    WeatherStatus(
-      WeatherCardSlots[0],
-      WeatherCardSlots[1],
-      WeatherCardSlots[2],
-      WeatherCardSlots[3],
-      WeatherCardSlots[4]
-    );
+    WeatherStatus();
   }
 }
 
 function updateCoffee() {
   if (CoffeeFTime == 1) {
-    CoffeeStatus(
-      CoffeeCardSlots[0],
-      CoffeeCardSlots[1],
-      CoffeeCardSlots[2],
-      CoffeeCardSlots[3],
-      CoffeeCardSlots[4]
-    );
+    CoffeeStatus();
   }
 }
 
 setInterval(() => {
   updateTime();
-  updateCoffee();
+  //updateCoffee();
   if (Date.now() % WEATHER_UPDATE_INTERVAL === 0) {
     updateWeather();
   }
