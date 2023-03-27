@@ -93,8 +93,10 @@ static esp_err_t post_something()
 
   esp_http_client_set_post_field(http_client, post_data, strlen(post_data));
 
-  // esp_http_client_set_header(http_client, "Content-Type", "image/jpg"); // sending a jpg file we will do this in the future
-
+  // sending a jpg file we will do this in the future 
+  // esp_http_client_set_header(http_client, "Content-Type", "image/jpg"); 
+ esp_http_client_set_header(http_client, "Content-Type", "text/html; charset=utf-8");
+ 
   esp_err_t err = esp_http_client_perform(http_client);
   if (err == ESP_OK)
   {
