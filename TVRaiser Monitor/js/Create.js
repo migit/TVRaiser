@@ -137,4 +137,34 @@ function CreateCard(
     }
   }
 }
-//Usage of CreateCard function first parameter is the card header, second parameter is the card content, third parameter is the card size, fourth parameter is the card icon
+//Function to create a chart
+function CreateChart(
+  Location,
+  ChartType,
+  ChartData,
+  ChartLabels,
+  ChartLabelText
+) {
+  const ctx = document.getElementById(Location);
+
+  new Chart(ctx, {
+    type: ChartType,
+    data: {
+      labels: [ChartLabels],
+      datasets: [
+        {
+          label: ChartLabelText,
+          data: [ChartData],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+}

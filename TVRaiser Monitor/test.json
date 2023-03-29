@@ -36,9 +36,7 @@
                     "CardAnimation": "None",
                     "CardFunction": "TimeStatus",
                     "FirstCardSlot": "0",
-                    "SecondCardSlot": "1",
-                    "ThirdCardSlot": "2",
-                    "FourthCardSlot": "3"
+                    "SecondCardSlot": "1"
                 },
                 {
                     "id": 4,
@@ -59,7 +57,7 @@
                 {
                     "id": 1,
                     "CardHeader": "Test",
-                    "CardContent": ["Status: ", "Description: ", "Level: <i>Full</i>", "Temperature: <i>160<sup>o</sup>C</i>"],
+                    "CardContent": ["Chart: ", "Description: ", "Level: <i>Full</i>", "Temperature: <i>160<sup>o</sup>C</i>"],
                     "CardSize": "Medium",
                     "CardIcon": "CoffeeMug",
                     "CardAnimation": "None",
