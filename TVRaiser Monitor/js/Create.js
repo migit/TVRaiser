@@ -26,23 +26,37 @@ function CreateMain(Page) {
     FifthSideBarClick +
     '") class="w3-bar-item w3-button">Recreation</button> </div> <div id="Banner" class="w3-theme w3-top w3-margin-bottom"> <!-- "Hamburger" button --> <div class="w3-row"> <button id="MainSideBarButton" class="w3-button w3-theme w3-xxlarge w3-left-align" style="width: 70px" onclick="SideB_Open()" > ☰ </button> <div class="w3-center w3-rest"><h1>TVRaiser Monitor</h1></div> </div> </div> <div class="w3-overlay" onclick="SideB_Close()" style="cursor: pointer" id="myOverlay" ></div> <p></p> <!-- Main page --> <div id="CardHolder" class="w3-container"></div> <!-- Footer --> <div class="w3-container w3-theme-d5 w3-center w3-bottom"> <h5 style="margin-left: 130px; display: inline-block"> Property of TVRaiser some rights reserved </h5> <img src="images/qrcode.png" alt="QRcode" style=" width: 100px; height: 100px; float: right; margin-bottom: 10px; margin-top: 10px; " /> </div>';
 }
+
+//Function to make default cards
+function extend() {
+  for (var i = 1; i < arguments.length; i++)
+    for (var key in arguments[i])
+      if (arguments[i].hasOwnProperty(key))
+        arguments[0][key] = arguments[i][key];
+  return arguments[0];
+}
+
 //Function to create cards
-function CreateCard(
-  CardHeader = "Card Header",
-  CardContent = ["Card Content"],
-  CardSize = "w3-half",
-  CardIcon = "",
-  CardAnimation = "",
-  CardFunction = null,
-  FirsCardSlot = null,
-  SecondCardSlot = null,
-  ThirdCardSlot = null,
-  FourthCardSlot = null
-) {
+function CreateCard(CardData) {
+  var defaults = {
+    CardHeader: "Card Header",
+    CardContent: ["Card Content"],
+    CardSize: "w3-half",
+    CardIcon: "",
+    CardAnimation: "",
+    CardFunction: null,
+    FirstCardSlot: null,
+    SecondCardSlot: null,
+    ThirdCardSlot: null,
+    FourthCardSlot: null,
+  };
+  console.log(CardData);
+  var context = extend(defaults, context);
+
   //Variables
   var Differentiator = 0;
 
-  var CardProcessing = CardHeader;
+  var CardProcessing = CardData.CardHeader;
 
   //Convert CardSize variables to right format
   const cardSizeMap = {
@@ -55,7 +69,7 @@ function CreateCard(
     XXXLarge: "w3-full",
   };
 
-  CardSize = cardSizeMap[CardSize] || "";
+  CardData.CardSize = cardSizeMap[CardData.CardSize] || "";
 
   //Convert CardIcon variables to right format
   const cardIconMap = {
@@ -72,7 +86,7 @@ function CreateCard(
     Calender: "fa fa-calendar",
   };
 
-  CardIcon = cardIconMap[CardIcon] || "";
+  CardData.CardIcon = cardIconMap[CardData.CardIcon] || "";
 
   //Convert CardAnimation variables to right format
   const cardAnimationMap = {
@@ -85,10 +99,10 @@ function CreateCard(
     Shake: "fa-shake",
   };
 
-  CardAnimation = cardAnimationMap[CardAnimation] || "";
+  CardData.CardAnimation = cardAnimationMap[CardData.CardAnimation] || "";
   //Used to create card divs
   while (CreatedCards.includes(CardProcessing)) {
-    CardProcessing = CardHeader + "_" + Differentiator;
+    CardProcessing = CardData.CardHeader + "_" + Differentiator;
     Differentiator++;
   }
 
@@ -96,10 +110,10 @@ function CreateCard(
   CreatedCards.push(CardProcessing);
   let IdText = CardProcessing.replace(/ /g, "_");
   const cardHtml = `
-  <div id="${IdText}_Card" class="w3-card-4 w3-round-large w3-margin ${CardSize}">
+  <div id="${IdText}_Card" class="w3-card-4 w3-round-large w3-margin ${CardData.CardSize}">
     <header id="${IdText}_Card_header" class="w3-container w3-theme w3-round-large">
-      <h1 id="${IdText}_Card_title">${CardHeader}</h1>
-      <p style="margin-left: 80px;" id="${IdText}_Card_icon" class="${CardIcon} ${CardAnimation} w3-margin w3-jumbo"></p>
+      <h1 id="${IdText}_Card_title">${CardData.CardHeader}</h1>
+      <p style="margin-left: 80px;" id="${IdText}_Card_icon" class="${CardData.CardIcon} ${CardData.CardAnimation} w3-margin w3-jumbo"></p>
     </header>
     <div id="${IdText}_Card_container" class="w3-container"></div>
   </div>
@@ -110,26 +124,38 @@ function CreateCard(
     .insertAdjacentHTML("beforeend", cardHtml);
 
   //Used to create card content
-  for (let i = 0; i < CardContent.length; i++) {
+  for (let i = 0; i < CardData.CardContent.length; i++) {
     document.getElementById(IdText + "_Card_container").innerHTML +=
-      "<p id=" + IdText + "_Card_content_" + i + ">" + CardContent[i] + "</p>";
+      "<p id=" +
+      IdText +
+      "_Card_content_" +
+      i +
+      ">" +
+      CardData.CardContent[i] +
+      "</p>";
   }
   //Used to create card slots
-  FirsCardSlot = IdText + "_Card_content_" + FirsCardSlot;
-  SecondCardSlot = IdText + "_Card_content_" + SecondCardSlot;
-  ThirdCardSlot = IdText + "_Card_content_" + ThirdCardSlot;
-  FourthCardSlot = IdText + "_Card_content_" + FourthCardSlot;
+  CardData.FirstCardSlot = IdText + "_Card_content_" + CardData.FirstCardSlot;
+  CardData.SecondCardSlot = IdText + "_Card_content_" + CardData.SecondCardSlot;
+  CardData.ThirdCardSlot = IdText + "_Card_content_" + CardData.ThirdCardSlot;
+  CardData.FourthCardSlot = IdText + "_Card_content_" + CardData.FourthCardSlot;
   //used to create function to card
-  if (CardFunction) {
+  if (CardData.CardFunction) {
     const cardElement = document.getElementById(`${IdText}_Card`);
     const iconElement = document.getElementById(`${IdText}_Card_icon`);
-    const script = window[CardFunction](
-      FirsCardSlot,
-      SecondCardSlot,
-      ThirdCardSlot,
-      FourthCardSlot,
-      iconElement
-    );
+    const script = window[CardData.CardFunction]({
+      CardHeader: CardData.CardHeader,
+      FirstCardSlot: CardData.FirstCardSlot,
+      SecondCardSlot: CardData.SecondCardSlot,
+      ThirdCardSlot: CardData.ThirdCardSlot,
+      FourthCardSlot: CardData.FourthCardSlot,
+      CardIconSlot: iconElement,
+      FirstParameter: CardData.FirstParameter,
+      SecondParameter: CardData.SecondParameter,
+      ThirdParameter: CardData.ThirdParameter,
+      FourthParameter: CardData.FourthParameter,
+      FifthParameter: CardData.FifthParameter,
+    });
     if (script) {
       const scriptElement = document.createElement("script");
       scriptElement.textContent = script;
@@ -138,23 +164,19 @@ function CreateCard(
   }
 }
 //Function to create a chart
-function CreateChart(
-  Location,
-  ChartType,
-  ChartData,
-  ChartLabels,
-  ChartLabelText
-) {
-  const ctx = document.getElementById(Location);
+function CreateChart(CardData) {
+  document.getElementById(CardData.FirstCardSlot).innerHTML =
+    "<div> <canvas id=" + CardData.CardHeader + "_Id" + "></canvas> </div>";
+  const ctx = document.getElementById(CardData.CardHeader + "_Id");
 
   new Chart(ctx, {
-    type: ChartType,
+    type: CardData.FirstParameter,
     data: {
-      labels: [ChartLabels],
+      labels: CardData.SecondParameter,
       datasets: [
         {
-          label: ChartLabelText,
-          data: [ChartData],
+          label: CardData.ThirdParameter,
+          data: CardData.FourthParameter,
           borderWidth: 1,
         },
       ],

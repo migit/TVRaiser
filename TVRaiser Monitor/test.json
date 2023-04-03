@@ -56,16 +56,20 @@
             [
                 {
                     "id": 1,
-                    "CardHeader": "Test",
-                    "CardContent": ["Chart: ", "Description: ", "Level: <i>Full</i>", "Temperature: <i>160<sup>o</sup>C</i>"],
-                    "CardSize": "Medium",
-                    "CardIcon": "CoffeeMug",
+                    "CardHeader": "Chart",
+                    "CardContent": ["Chart: ", "Description: "],
+                    "CardSize": "xLarge",
+                    "CardIcon": "Clock",
                     "CardAnimation": "None",
-                    "CardFunction": "CoffeeStatus",
+                    "CardFunction": "CreateChart",
                     "FirstCardSlot": "0",
                     "SecondCardSlot": "1",
                     "ThirdCardSlot": "2",
-                    "FourthCardSlot": "3"
+                    "FourthCardSlot": "3",
+                    "FirstParameter": "line",
+                    "SecondParameter": ["January", "February", "March", "April", "May", "June", "July"],
+                    "ThirdParameter": "My First dataset",
+                    "FourthParameter": [65, 59, 80, 81, 56, 55, 40]
                 },
                 {
                     "id": 2,
