@@ -1,5 +1,6 @@
 //Variables
 var LastBrewed = 0;
+var LastNotification = 0;
 var JsonLength = 0;
 var TimerInterval = 200;
 var CurrentPage = "MainPage";
@@ -11,10 +12,37 @@ var WeatherFTime = 0;
 var TimeCardSlots = [];
 var CoffeeCardSlots = [];
 var WeatherCardSlots = [];
+var NotificationCardSlots = [];
+
+//Modular functions
+//Checks if the json data is new
+function isDataNew(jsonData) {
+  const latestId = jsonData[jsonData.length - 1].id;
+  return latestId !== LastBrewed;
+}
+//Clears card holder
+function ClearCardHolder() {
+  LastBrewed = 0;
+  JsonLength = 0;
+  TimerInterval = 200;
+  CoffeeFTime = 0;
+  TimeFTime = 0;
+  WeatherFTime = 0;
+  TimeCardSlots = [];
+  CoffeeCardSlots = [];
+  WeatherCardSlots = [];
+  NotificationCardSlots = [];
+  const cardHolder = document.getElementById("CardHolder");
+  while (cardHolder.firstChild) {
+    cardHolder.removeChild(cardHolder.firstChild);
+  }
+}
+
 //Json fetch functions
 async function CardCreation(Page) {
   CurrentPage = Page;
-  document.getElementById("CardHolder").innerHTML = "";
+  ClearCardHolder();
+
   //Fetches the json file
   const res = await fetch(`test.json`);
   const json = await res.json();
@@ -62,7 +90,7 @@ async function WeatherStatus(CardData) {
       `https://api.open-meteo.com/v1/forecast?latitude=60.81&longitude=23.62&current_weather=true&timezone=auto`
     );
     if (!res.ok) {
-      throw new Error("Network response was not ok");
+      throw new Error(`HTTP error! status: ${res.status}`);
     }
 
     const json = await res.json();
@@ -110,58 +138,45 @@ function CoffeeSide(FirstCardSlot, CardIconSlot) {
     "Status: " + "<i style = 'color: Grey'>Idle</i>";
 }
 
-//Coffee main function
-function CoffeeStatus(CardData) {
-  //Updates the coffee status
-  (async () => {
-    try {
-      if (CardData.FirstCardSlot != null) {
-        CoffeeCardSlots.push(
-          CardData.FirstCardSlot,
-          CardData.SecondCardSlot,
-          CardData.CardIconSlot
-        );
-      }
-      let First = 0;
-      let Second = 1;
-      let Third = 2;
-      const res = await fetch(`https://bezainternational.org/tvr/`);
-      if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
-      }
-      const json = await res.json();
-      JsonLength = json.length - 1;
-      if (LastBrewed != json[JsonLength].id) {
-        if (LastBrewed == null) {
-          LastBrewed = json[JsonLength].id;
-        }
-        for (let i = 0; i <= CoffeeCardSlots.length; i = i + 4) {
-          LastBrewed = json[JsonLength].id;
-          if (document.getElementById(CoffeeCardSlots[First]) != null) {
-            document.getElementById(CoffeeCardSlots[Second]).innerHTML =
-              "Description: " + "<i>" + json[JsonLength].content + "</i>";
-            CoffeeCardSlots[Third].classList.add("fa-shake");
-            document.getElementById(CoffeeCardSlots[First]).innerHTML =
-              "Status: " + "<i style = 'color: green'>Ready</i>";
-            document.getElementById("Ding").play();
-            TimerInterval = 20000;
-            setTimeout(
-              CoffeeSide,
-              TimerInterval,
-              CoffeeCardSlots[First],
-              CoffeeCardSlots[Third]
-            );
-          }
-          First = First + 3;
-          Second = Second + 3;
-          Third = Third + 3;
-        }
-      }
-      CoffeeFTime = 1;
-    } catch (error) {
-      console.error(error);
+async function CoffeeStatus(CardData) {
+  // Updates the coffee status
+  try {
+    if (CardData.FirstCardSlot != null) {
+      CoffeeCardSlots.push(
+        CardData.FirstCardSlot,
+        CardData.SecondCardSlot,
+        CardData.CardIconSlot
+      );
     }
-  })();
+    const res = await fetch(`https://bezainternational.org/tvr/`);
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    const json = await res.json();
+    if (isDataNew(json)) {
+      LastBrewed = json[json.length - 1].id;
+      for (let i = 0; i <= CoffeeCardSlots.length; i = i + 4) {
+        if (document.getElementById(CoffeeCardSlots[i]) != null) {
+          document.getElementById(CoffeeCardSlots[i + 1]).innerHTML =
+            "Description: " + "<i>" + json[json.length - 1].content + "</i>";
+          CoffeeCardSlots[i + 2].classList.add("fa-shake");
+          document.getElementById(CoffeeCardSlots[i]).innerHTML =
+            "Status: " + "<i style = 'color: green'>Ready</i>";
+          document.getElementById("Ding").play();
+          TimerInterval = 20000;
+          setTimeout(
+            CoffeeSide,
+            TimerInterval,
+            CoffeeCardSlots[i],
+            CoffeeCardSlots[i + 2]
+          );
+        }
+      }
+    }
+    CoffeeFTime = 1;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 //Time functions
@@ -190,6 +205,40 @@ function TimeStatus(CardData) {
     }
     TimeFTime = 1;
   })();
+}
+// Notification functions
+async function updateNotifications(CardData) {
+  const res = await fetch("TestNotifications.json");
+  if (!res.ok) {
+    console.error(`HTTP error! status: ${res.status}`);
+    return;
+  }
+  const json = await res.json();
+  if (isDataNew(json)) {
+    LastNotification = json[json.length - 1].id;
+    if (CardData.FirstCardSlot != null) {
+      NotificationCardSlots.push(CardData.FirstCardSlot);
+      NotificationCardSlots.push(CardData.SecondCardSlot);
+    }
+
+    for (let i = 0; i < NotificationCardSlots.length; i = i + 2) {
+      const NotificationSlot = i;
+      const timestampSlot = i + 1;
+      const card = document.getElementById(
+        NotificationCardSlots[NotificationSlot]
+      );
+      const card2 = document.getElementById(
+        NotificationCardSlots[timestampSlot]
+      );
+      if (card != null) {
+        card.innerHTML =
+          "Notification: <i>" + json[json.length - 1].message + "</i>";
+        card2.innerHTML =
+          "Time: <i>" + json[json.length - 1].timestamp + "</i>";
+      }
+    }
+    NotificationFTime = 1;
+  }
 }
 
 //Update functions

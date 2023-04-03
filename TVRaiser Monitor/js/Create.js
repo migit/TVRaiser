@@ -145,6 +145,7 @@ function CreateCard(CardData) {
     const iconElement = document.getElementById(`${IdText}_Card_icon`);
     const script = window[CardData.CardFunction]({
       CardHeader: CardData.CardHeader,
+      Id: IdText,
       FirstCardSlot: CardData.FirstCardSlot,
       SecondCardSlot: CardData.SecondCardSlot,
       ThirdCardSlot: CardData.ThirdCardSlot,
@@ -166,8 +167,8 @@ function CreateCard(CardData) {
 //Function to create a chart
 function CreateChart(CardData) {
   document.getElementById(CardData.FirstCardSlot).innerHTML =
-    "<div> <canvas id=" + CardData.CardHeader + "_Id" + "></canvas> </div>";
-  const ctx = document.getElementById(CardData.CardHeader + "_Id");
+    "<div> <canvas id=" + CardData.Id + "_Id" + "></canvas> </div>";
+  const ctx = document.getElementById(CardData.Id + "_Id");
 
   new Chart(ctx, {
     type: CardData.FirstParameter,
