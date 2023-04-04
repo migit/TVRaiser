@@ -3,6 +3,8 @@ TVRaiser
 
 TVRaiser is a program that aims to repurpose idle TV screens by displaying useful information from other smart devices in your home or office. With TVRaiser, you can check the status of your coffee machine, view the contents of your fridge, and more, all from the comfort of your TV screen.
 
+![TVRaiser simple architecthture - Azure (2019) framework](https://user-images.githubusercontent.com/6859479/223419738-9da8f093-8715-4cab-85c9-3b887046497f.png)
+
 Features
 --------
 
