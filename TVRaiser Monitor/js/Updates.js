@@ -240,6 +240,35 @@ async function updateNotifications(CardData) {
     NotificationFTime = 1;
   }
 }
+//Calender events
+async function FetchCalendarEvents(CardData) {
+  try {
+    const response = await fetch(CardData.endpointUrl, {
+      headers: {
+        Authorization: `Bearer ${CardData.authToken}`,
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`Fetch failed with status ${response.status}`);
+    }
+    const data = await response.json();
+    if (isDataNew(data)) {
+      LastCalendarEvent = data[data.length - 1].id;
+      if (CardData.FirstCardSlot != null) {
+        CalendarCardSlots.push(CardData.FirstCardSlot);
+        CalendarCardSlots.push(CardData.SecondCardSlot);
+      }
+      for (let i = 0; i < CalendarCardSlots.length; i = i + 2) {
+        const CalendarSlot = i;
+        const card = document.getElementById(CalendarCardSlots[CalendarSlot]);
+      }
+    }
+    console.log(data);
+  } catch (error) {
+    // Handle any errors here
+    console.error(error);
+  }
+}
 
 //Update functions
 

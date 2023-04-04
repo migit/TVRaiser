@@ -32,6 +32,7 @@ i {
 
 #Sidebar{
     width: 15%;
+    display: block;
 }
 #Temperature{
     font-size: 100px;
@@ -42,4 +43,13 @@ i {
 #SideBarClose{
     padding: 19px;
     font-size: x-large;
+}
+
+#CardHolder{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: flex-start;
+	align-content: space-evenly;
 }
