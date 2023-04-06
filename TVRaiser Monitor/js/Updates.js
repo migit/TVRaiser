@@ -14,15 +14,18 @@ var CoffeeCardSlots = [];
 var WeatherCardSlots = [];
 var NotificationCardSlots = [];
 
+const TIME_UPDATE_INTERVAL = 1000; // 1 second
+const WEATHER_UPDATE_INTERVAL = 120000; // 2 minutes
+const COFFEE_UPDATE_INTERVAL = 120000; // 2 minutes
+
 //Modular functions
 //Checks if the json data is new
-function isDataNew(jsonData) {
+function isDataNew(jsonData, Check) {
   const latestId = jsonData[jsonData.length - 1].id;
-  return latestId !== LastBrewed;
+  return latestId !== Check;
 }
 //Clears card holder
 function ClearCardHolder() {
-  LastBrewed = 0;
   JsonLength = 0;
   TimerInterval = 200;
   CoffeeFTime = 0;
@@ -136,6 +139,7 @@ function CoffeeSide(FirstCardSlot, CardIconSlot) {
   CardIconSlot.classList.remove("fa-shake");
   document.getElementById(FirstCardSlot).innerHTML =
     "Status: " + "<i style = 'color: Grey'>Idle</i>";
+  COFFEE_UPDATE_INTERVAL = 1000;
 }
 
 async function CoffeeStatus(CardData) {
@@ -153,7 +157,7 @@ async function CoffeeStatus(CardData) {
       throw new Error(`HTTP error! status: ${res.status}`);
     }
     const json = await res.json();
-    if (isDataNew(json)) {
+    if (isDataNew(json, LastBrewed)) {
       LastBrewed = json[json.length - 1].id;
       for (let i = 0; i <= CoffeeCardSlots.length; i = i + 4) {
         if (document.getElementById(CoffeeCardSlots[i]) != null) {
@@ -170,6 +174,15 @@ async function CoffeeStatus(CardData) {
             CoffeeCardSlots[i],
             CoffeeCardSlots[i + 2]
           );
+        }
+      }
+    } else if (!isDataNew(json, LastBrewed)) {
+      for (let i = 0; i <= CoffeeCardSlots.length; i = i + 4) {
+        if (document.getElementById(CoffeeCardSlots[i]) != null) {
+          document.getElementById(CoffeeCardSlots[i + 1]).innerHTML =
+            "Description: " + "<i>" + json[json.length - 1].content + "</i>";
+          document.getElementById(CoffeeCardSlots[i]).innerHTML =
+            "Status: " + "<i>idle</i>";
         }
       }
     }
@@ -305,9 +318,6 @@ class JsonWatcher {
 const watcher = new JsonWatcher(jsonObj, "page", onPageChange, 500);
 watcher.start();
 */
-const TIME_UPDATE_INTERVAL = 1000; // 1 second
-const WEATHER_UPDATE_INTERVAL = 120000; // 2 minutes
-const COFFEE_UPDATE_INTERVAL = 120000; // 2 minutes
 
 function updateTime() {
   if (TimeFTime == 1) {
@@ -329,7 +339,10 @@ function updateCoffee() {
 
 setInterval(() => {
   updateTime();
-  updateCoffee();
+  if (Date.now() % COFFEE_UPDATE_INTERVAL === 0) {
+    updateCoffee();
+  }
+
   if (Date.now() % WEATHER_UPDATE_INTERVAL === 0) {
     updateWeather();
   }

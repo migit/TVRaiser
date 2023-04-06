@@ -1,0 +1,184 @@
+/* Basic styles for the entire page */
+/* Basic styles for the entire page */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  /* Navigation bar styles */
+  nav {
+    background-color: #333;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  nav li {
+    display: inline-block;
+    padding: 10px 20px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  nav a:hover {
+    color: #ccc;
+  }
+  
+  /* Card creation form styles */
+  section:nth-child(3) {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  section:nth-child(3) h2 {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+  }
+  
+  section:nth-child(3) form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  section:nth-child(3) label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  section:nth-child(3) input[type="text"],
+  section:nth-child(3) textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    font-size: 1em;
+  }
+  
+  section:nth-child(3) input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+  }
+  
+  section:nth-child(3) input[type="submit"]:hover {
+    background-color: #555;
+  }
+  
+  /* Card preview styles */
+  section:nth-child(4) {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  section:nth-child(4) h2 {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+  }
+  
+  #card-preview {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 80%;
+    height: 200px;
+    overflow-y: scroll;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* User accounts styles */
+  section:nth-child(5) {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  section:nth-child(5) h2 {
+    margin-bottom: 10px;
+  }
+  
+  section:nth-child(5) table {
+    border-collapse: collapse;
+    width: 80%;
+  }
+  
+  section:nth-child(5) td, th {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  section:nth-child(5) th {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  /* Settings styles */
+  section:nth-child(6) {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  section:nth-child(6) h2 {
+    margin-bottom: 10px;
+  }
+  
+  section:nth-child(6) form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  section:nth-child(6) input[type="submit"] {
+    margin-top: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  section:nth-child(6) input[type="submit"]:hover {
+    background-color: #555;
+  }
+  
