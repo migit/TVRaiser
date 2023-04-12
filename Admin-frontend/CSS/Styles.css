@@ -1,0 +1,215 @@
+/* Basic styles for the entire page */
+body{margin:0;padding:0;font-family:Arial,sans-serif;background-color:#f4f4f4}
+/* Navigation bar styles */
+nav{background-color:#333;color:#fff;box-shadow:0 0 10px rgba(0,0,0,.2)}
+nav ul{margin:0;padding:0;list-style-type:none;display:flex;justify-content:space-between}
+nav li{display:inline-block;padding:10px 20px}
+nav a{color:#fff;text-decoration:none;font-weight:bold;transition:all .3s ease}
+nav a:hover{color:#ccc}
+/* Home page styles */
+#home {
+  background-color: #F5F5F5;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#home h1 {
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #333;
+}
+
+#home p {
+  font-size: 24px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.5;
+  color: #666;
+}
+
+
+/* Card creation form styles */
+.modal{display:none;position:fixed;z-index:1;padding-top:100px;left:0;top:0;width:100%;height:87%;overflow:auto;background-color:rgba(0,0,0,.4)}
+.modal-content{background-color:#fefefe;margin:auto;padding:20px;border:1px solid #888;width:50%}
+.close{color:#aaa;float:right;font-size:28px;font-weight:bold}
+.close:hover,.close:focus{color:black;text-decoration:none;cursor:pointer}
+.fancy-button{background-color:#4CAF50;border:none;color:#fff;padding:10px 20px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;border-radius:5px;box-shadow:2px 2px 5px rgba(0,0,0,.3);cursor:pointer;transition:background-color .3s ease-in-out}
+.fancy-button:hover{background-color:#3e8e41}
+form{display:flex;flex-direction:column;align-items:center}
+label{font-weight:bold;margin-right:10px}
+input[type="text"],textarea,select{width:100%;padding:12px 20px;margin:8px 0;box-sizing:border-box;border:2px solid #ccc;border-radius:4px;background-color:#f8f8f8;resize:none}
+select{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><polygon points='6,0 0,8 12,8' style='fill:black;'/></svg>");background-repeat:no-repeat;background-position:right 10px center;appearance:none;-webkit-appearance:none;-moz-appearance:none}
+select::-ms-expand{display:none}
+input[type="submit"]{background-color:#4caf50;color:#fff;padding:12px 20px;border:none;border-radius:4px;cursor:pointer}
+input[type="submit"]:hover{background-color:#45a049}
+/* Fields for Coffee Status */
+#coffee-status-fields,#weather-status-fields,#time-status-fields,#update-notifications-fields{display:none}
+/* Card preview styles */
+#cards {
+  display: none;
+  margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-preview-heading {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 2em;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+#card-preview {
+  border: 2px solid #ccc;
+  padding: 10px;
+  width: 80%;
+  height: 400px;
+  overflow-y: scroll;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+}
+
+.button-dropdown-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  position: relative;
+}
+
+.button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px 0 0 10px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #3e8e41;
+}
+
+.dropdown-wrapper {
+  position: relative;
+}
+
+.dropdown-button {
+  background-color: #4CAF50;
+  border: 2px solid #ccc;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+}
+
+.dropdown-button:hover {
+  background-color: #3e8e41;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  transform: translateX(-1px);
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 0 10px 10px 10px;
+  z-index: 1;
+  display: none;
+}
+
+.dropdown-menu a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-menu a:hover {
+  background-color: #ddd;
+}
+
+.button-dropdown-wrapper:hover .dropdown-menu {
+  display: block;
+}
+
+.show {
+  display: block;
+}
+
+/* User accounts styles */
+#accounts {
+  display: none;
+  margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+#accounts h2 {
+  margin-bottom: 10px;
+}
+
+#accounts table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+#accounts td,
+#accounts th {
+  border: 1px solid;
+  background-color: #333;
+  color: #fff;
+  padding: 8px;
+}
+
+/* Settings styles */
+#settings {
+  display: none;
+  margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+#settings h2 {
+  margin-bottom: 10px;
+}
+
+#settings form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#settings input[type="submit"] {
+  margin-top: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#settings input[type="submit"]:hover {
+  background-color: #555;
+}
+
+
+  
+ 
