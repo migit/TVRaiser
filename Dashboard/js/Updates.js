@@ -25,7 +25,7 @@ function isDataNew(jsonData, Check) {
   return latestId !== Check;
 }
 //Clears card holder
-function ClearCardHolder() {
+function ClearCardHolder(CardLocation) {
   JsonLength = 0;
   TimerInterval = 200;
   CoffeeFTime = 0;
@@ -35,19 +35,19 @@ function ClearCardHolder() {
   CoffeeCardSlots = [];
   WeatherCardSlots = [];
   NotificationCardSlots = [];
-  const cardHolder = document.getElementById("CardHolder");
+  const cardHolder = document.getElementById(CardLocation);
   while (cardHolder.firstChild) {
     cardHolder.removeChild(cardHolder.firstChild);
   }
 }
 
 //Json fetch functions
-async function CardCreation(Page) {
+async function CardCreation(CardLocation, Page) {
   CurrentPage = Page;
-  ClearCardHolder();
+  ClearCardHolder(CardLocation);
 
   //Fetches the json file
-  const res = await fetch(`test.json`);
+  const res = await fetch(`file:///C:/Coding/TVRaiser/Dashboard/test.json`);
   const json = await res.json();
   const PageContent = json[Page];
   let Iteration = 0;
@@ -55,6 +55,7 @@ async function CardCreation(Page) {
     //Creates the card
     console.log(element);
     CreateCard({
+      CardLocation: CardLocation,
       CardHeader: element.CardHeader,
       CardContent: element.CardContent,
       CardSize: element.CardSize,

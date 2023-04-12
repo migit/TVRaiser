@@ -35,7 +35,7 @@
         margin-bottom: 20px;
       }
 
-      input[type="submit"] {
+      button{
         background-color: #333;
         color: #fff;
         border: none;
@@ -45,6 +45,6 @@
         cursor: pointer;
       }
 
-      input[type="submit"]:hover {
+      button:hover {
         background-color: #666;
       }

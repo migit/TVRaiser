@@ -125,7 +125,6 @@ input[type="submit"]:hover{background-color:#45a049}
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 100%;
   transform: translateX(-1px);
   background-color: #f1f1f1;
   min-width: 160px;

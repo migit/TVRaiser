@@ -8,7 +8,7 @@
     <meta name="author" content="TVRaiser" />
     <link rel="stylesheet" href="../CSS/Styles.css" />
   </head>
-  <body>
+  <body onload="CardCreation('card-preview', 'MainPage')">
     <!-- Navigation bar with links to different pages -->
     <nav>
       <ul>
@@ -37,11 +37,13 @@
         <div class="button-dropdown-wrapper">
           <button id="create-card-btn" class="button">Create Card</button>
           <div class="dropdown-wrapper">
-            <button class="dropdown-button">Dropdown</button>
+            <button class="dropdown-button">Page preview</button>
             <div class="dropdown-menu">
-              <a href="#">Menu Item 1</a>
-              <a href="#">Menu Item 2</a>
-              <a href="#">Menu Item 3</a>
+              <a href="#">Main page</a>
+              <a href="#">Charts</a>
+              <a href="#">Panorama</a>
+              <a href="#">Tickets</a>
+              <a href="#">Recreation</a>
             </div>
           </div>
         </div>
@@ -241,5 +243,15 @@
     <!-- JavaScript functions -->
     <script src="../JS/CardCreation.js" defer type="text/javascript"></script>
     <script src="../JS/Script.js" defer type="text/javascript"></script>
+    <script
+      src="../../Dashboard/js/Create.js"
+      defer
+      type="text/javascript"
+    ></script>
+    <script
+      src="../../Dashboard/js/Updates.js"
+      defer
+      type="text/javascript"
+    ></script>
   </body>
 </html>

@@ -1,6 +1,0 @@
-<IfModule mod_headers.c>
-  <Files "users.json">
-    Header set Access-Control-Allow-Origin "*"
-    Header set Access-Control-Allow-Methods "POST, GET, OPTIONS"
-  </Files>
-</IfModule>

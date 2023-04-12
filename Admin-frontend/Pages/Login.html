@@ -2,12 +2,12 @@
 <html>
   <head>
     <title>Admin Login</title>
-    <link rel="stylesheet" href="../CSS/LoginStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../CSS/LoginStyle.css" />
   </head>
   <body>
     <h1>TVRaiser Login</h1>
 
-    <form>
+    <form action="/login" method="POST">
       <h2 id="InfoText"></h2>
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" required /><br /><br />
@@ -18,9 +18,10 @@
         name="password"
         required
       /><br /><br />
-      <input type="submit" value="Login" />
+      <button id="login-btn">Login</button>
     </form>
+
     <!-- JavaScript functions -->
-    <script src="../JS/Login.js" defer type="text/javascript"></script>
+    <script src="../JS/LoginClient.js" defer></script>
   </body>
 </html>

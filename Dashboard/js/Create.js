@@ -80,6 +80,7 @@ function extend() {
 //Function to create cards
 function CreateCard(CardData) {
   var defaults = {
+    CardLocation: "CardHolder",
     CardHeader: "Card Header",
     CardContent: ["Card Content"],
     CardSize: "w3-half",
@@ -161,7 +162,7 @@ function CreateCard(CardData) {
 `;
 
   document
-    .getElementById("CardHolder")
+    .getElementById(CardLocation)
     .insertAdjacentHTML("beforeend", cardHtml);
 
   //Used to create card content
