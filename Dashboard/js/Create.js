@@ -7,24 +7,25 @@ let CreatedCards = [];
 function CreateMain(Page) {
   //Create main elements
 
-  const FirstSideBarClick = "MainPage";
-  const SecondSideBarClick = "Charts";
-  const ThirdSideBarClick = "Panorama";
-  const FourthSideBarClick = "Tickets";
-  const FifthSideBarClick = "Recreation";
-
   function createSidebar() {
+    const CardLocation = "CardHolder";
+    const FirstSideBarClick = "MainPage";
+    const SecondSideBarClick = "Charts";
+    const ThirdSideBarClick = "Panorama";
+    const FourthSideBarClick = "Tickets";
+    const FifthSideBarClick = "Recreation";
+
     const sidebar = `
-    <!-- SideBar -->
-    <div class="w3-sidebar w3-bar-block w3-border-right w3-black w3-animate-left w3-top" style="display: none; z-index: 5" id="Sidebar" >
-      <button onclick="SideB_Close()" id="SideBarClose" class="w3-bar-item w3-theme" > Close &times; </button>
-      <button onclick=CardCreation("${FirstSideBarClick}") class="w3-bar-item w3-button">Main Page</button>
-      <button onclick=CardCreation("${SecondSideBarClick}") class="w3-bar-item w3-button">Charts</button>
-      <button onclick=CardCreation("${ThirdSideBarClick}") class="w3-bar-item w3-button">Panorama</button>
-      <button onclick=CardCreation("${FourthSideBarClick}") class="w3-bar-item w3-button">Tickets</button>
-      <button onclick=CardCreation("${FifthSideBarClick}") class="w3-bar-item w3-button">Recreation</button>
-    </div>
-  `;
+      <!-- SideBar -->
+      <div class="w3-sidebar w3-bar-block w3-border-right w3-black w3-animate-left w3-top" style="display: none; z-index: 5" id="Sidebar" >
+        <button onclick="SideB_Close()" id="SideBarClose" class="w3-bar-item w3-theme" > Close &times; </button>
+        <button onclick="CardCreation('${CardLocation}', '${FirstSideBarClick}')" class="w3-bar-item w3-button">Main Page</button>
+        <button onclick="CardCreation('${CardLocation}', '${SecondSideBarClick}')" class="w3-bar-item w3-button">Charts</button>
+        <button onclick="CardCreation('${CardLocation}', '${ThirdSideBarClick}')" class="w3-bar-item w3-button">Panorama</button>
+        <button onclick="CardCreation('${CardLocation}', '${FourthSideBarClick}')" class="w3-bar-item w3-button">Tickets</button>
+        <button onclick="CardCreation('${CardLocation}', '${FifthSideBarClick}')" class="w3-bar-item w3-button">Recreation</button>
+      </div>
+    `;
     document.getElementById("main").innerHTML += sidebar;
   }
 
@@ -162,7 +163,7 @@ function CreateCard(CardData) {
 `;
 
   document
-    .getElementById(CardLocation)
+    .getElementById(CardData.CardLocation)
     .insertAdjacentHTML("beforeend", cardHtml);
 
   //Used to create card content

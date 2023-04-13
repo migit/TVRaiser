@@ -1,5 +1,7 @@
 /* Basic styles for the entire page */
 body{margin:0;padding:0;font-family:Arial,sans-serif;background-color:#f4f4f4}
+.button {background-color: #4CAF50;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer; border-radius: 5px;}
+.button:hover {background-color: #3e8e41;}
 /* Navigation bar styles */
 nav{background-color:#333;color:#fff;box-shadow:0 0 10px rgba(0,0,0,.2)}
 nav ul{margin:0;padding:0;list-style-type:none;display:flex;justify-content:space-between}
@@ -92,7 +94,7 @@ input[type="submit"]:hover{background-color:#45a049}
   position: relative;
 }
 
-.button {
+.card-button {
   background-color: #4CAF50;
   color: white;
   padding: 10px 20px;
@@ -101,7 +103,7 @@ input[type="submit"]:hover{background-color:#45a049}
   cursor: pointer;
 }
 
-.button:hover {
+.card-button:hover {
   background-color: #3e8e41;
 }
 
@@ -187,27 +189,45 @@ input[type="submit"]:hover{background-color:#45a049}
 }
 
 #settings h2 {
-  margin-bottom: 10px;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 #settings form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
-#settings input[type="submit"] {
-  margin-top: 10px;
-  background-color: #333;
-  color: #fff;
+#settings label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#settings select,
+#settings input[type="color"] {
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+#settings button[type="submit"] {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
   border: none;
-  padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-#settings input[type="submit"]:hover {
-  background-color: #555;
+#settings button[type="submit"]:hover {
+  background-color: #3e8e41;
 }
+
 
 
   

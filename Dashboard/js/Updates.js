@@ -47,7 +47,7 @@ async function CardCreation(CardLocation, Page) {
   ClearCardHolder(CardLocation);
 
   //Fetches the json file
-  const res = await fetch(`file:///C:/Coding/TVRaiser/Dashboard/test.json`);
+  const res = await fetch(`test.json`);
   const json = await res.json();
   const PageContent = json[Page];
   let Iteration = 0;

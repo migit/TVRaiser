@@ -5,6 +5,17 @@
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "express": "^4.18.2",
+    "http": "^0.0.1-security",
     "sqlite3": "^5.1.6"
-  }
+  },
+  "name": "tvraiser",
+  "description": "TVRaiser\r ========",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
