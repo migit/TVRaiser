@@ -4,8 +4,8 @@
 [![Languages: JavaScript | Node.js](https://img.shields.io/badge/languages-JavaScript%20%7C%20Node.js-green.svg)](#tech-stack)
 [![GitHub repo size](https://img.shields.io/github/repo-size/migit/TVRaiser)](#)
 
+<img width="1744" height="1416" alt="TVRaiser_ Repurposing Idle TV Screens for Smart Home Information - visual selection" src="https://github.com/user-attachments/assets/672b5c13-1173-4fac-9a78-bd77fa7e1153" />
 
-![TVRaiser Architecture](https://user-images.githubusercontent.com/6859479/223419738-9da8f093-8715-4cab-85c9-3b887046497f.png)
 
 
 ---
@@ -31,6 +31,7 @@
 ## Installation
 
 ### Prerequisites
+
 
 * Node.js installed on your system
 
