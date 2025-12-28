@@ -5,7 +5,7 @@
 [![GitHub repo size](https://img.shields.io/github/repo-size/migit/TVRaiser)](#)
 <!--- ![TVRaiser Architecture](https://user-images.githubusercontent.com/6859479/223419738-9da8f093-8715-4cab-85c9-3b887046497f.png) --->
 <img width="1797" height="1329" alt="TVRaiser_ Repurposing Idle TV Screens for Smart Home Information - visual selection (1)" src="https://github.com/user-attachments/assets/e38bbdca-d64b-48e4-afdf-78f1f26b1ba2" />
----
+
 
 **TVRaiser** is a software platform that repurposes idle TV screens to display useful information from smart devices in your home or office. Check the status of your coffee machine, fridge contents, weather updates, notifications, and more, all from your TV.
 
