@@ -6,7 +6,7 @@
 
 <img width="1744" height="1416" alt="TVRaiser_ Repurposing Idle TV Screens for Smart Home Information - visual selection" src="https://github.com/user-attachments/assets/672b5c13-1173-4fac-9a78-bd77fa7e1153" />
 
-
+<img width="1695" height="1269" alt="TVRaiser_ Repurposing Idle TV Screens for Smart Home Information - visual selection" src="https://github.com/user-attachments/assets/8126af0b-7e4e-4d93-95ee-a6dee14ac03e" />
 
 ---
 
